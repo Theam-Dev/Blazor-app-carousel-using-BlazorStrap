@@ -1,0 +1,41 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+<BSCarousel HasControls="true" HasIndicators="true">
+    @for (int i = 0; i < items.Count; i++)
+    {
+        Item item = items[i];
+        <BSCarouselItem>
+            <img src="@item.Source" width="800" height="400" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" />
+            <BSCarouselCaption Class="d-none d-md-block">
+                <h5>@item.Caption</h5>
+            </BSCarouselCaption>
+        </BSCarouselItem>
+    }
+</BSCarousel>
+    
+@code {
+
+    IList<Item> items = new List<Item>
+    {
+        new Item {
+            Source = "/img/bg1.jpg",
+            Caption = "Slide 1",
+        },
+        new Item {
+            Source = "/img/bg2.jpg",
+            Caption = "Slide 2",
+        },
+        new Item {
+            Source = "/img/bg3.jpg",
+            Caption = "Slide 3"
+        }
+    };
+
+    class Item
+    {
+        public string? Source { get; set; }
+        public string? Caption { get; set; }
+    }
+
+}
